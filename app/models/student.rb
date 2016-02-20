@@ -2,8 +2,17 @@ class Student < ActiveRecord::Base
   # implement your Student model here
   belongs_to :teacher
   validates :email, uniqueness: true
-  validate :no_toddlers
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i #valid email regex
+  validate :no_toddlers
+  after_save :addlaststudent 
+
+
+  def addlaststudent
+    if teacher
+      teacher.last_student_added_at = Date.today 
+      teacher.save
+    end
+  end
 
 
   def no_toddlers

@@ -3,7 +3,7 @@ require 'rspec'
 # Hard code the DATABASE environment variable so that it only connects
 # to the test database when running rspec. Take a look inside config.rb
 # to see how this value is being used.
-ENV['DATABASE'] = 'test'
+ENV['DATABASE'] = 'development'
 require './app_config'
 
 # Connect to the database once before running any tests.

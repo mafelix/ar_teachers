@@ -1,5 +1,5 @@
 class TeachersImporter
-
+  
   def initialize(filename=File.absolute_path('db/data/teachers.csv'))
     @filename = filename
   end
